@@ -25,7 +25,7 @@ class UniformGrid(AnyGrid):
         return [self.point(i) for i in range(self.n + 1)]
 
     @overrides
-    def point(self, i) -> float:
+    def point(self, i: int) -> float:
         return self.interval.l + i * self.h
 
     @property  # type: ignore

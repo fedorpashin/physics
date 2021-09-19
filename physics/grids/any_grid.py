@@ -12,7 +12,7 @@ class AnyGrid(ABC):
         pass
 
     @abstractmethod
-    def point(self, i) -> float:
+    def point(self, i: int) -> float:
         pass
 
     @property

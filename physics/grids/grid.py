@@ -22,7 +22,7 @@ class Grid(AnyGrid):
         return self.__points
 
     @overrides
-    def point(self, i) -> float:
+    def point(self, i: int) -> float:
         return self.points[i]
 
     @cached_property  # type: ignore
