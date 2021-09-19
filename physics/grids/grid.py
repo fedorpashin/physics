@@ -34,3 +34,7 @@ class Grid(AnyGrid):
     @overrides
     def n(self) -> int:
         return len(self.points) - 1
+
+    @overrides
+    def h(self, i: int) -> float:
+        return self.points[i] - self.points[i-1]

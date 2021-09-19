@@ -24,3 +24,7 @@ class AnyGrid(ABC):
     @abstractmethod
     def n(self) -> int:
         pass
+
+    @abstractmethod
+    def h(self, i: int) -> float:
+        pass

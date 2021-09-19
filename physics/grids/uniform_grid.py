@@ -26,7 +26,7 @@ class UniformGrid(AnyGrid):
 
     @overrides
     def point(self, i: int) -> float:
-        return self.interval.l + i * self.h
+        return self.interval.l + i * self.__h
 
     @property  # type: ignore
     @overrides
@@ -38,6 +38,10 @@ class UniformGrid(AnyGrid):
     def n(self) -> int:
         return self.__n
 
+    @overrides
+    def h(self, i: int) -> float:
+        return self.__h
+
     @cached_property
-    def h(self) -> float:
+    def __h(self) -> float:
         return len(self.interval) / self.n
