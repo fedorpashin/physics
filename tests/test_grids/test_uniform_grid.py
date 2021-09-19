@@ -25,4 +25,7 @@ class TestUniformGrid(unittest.TestCase):
         self.assertEqual(self.grid.n, self.n)
 
     def test_h(self):
-        self.assertEqual(self.grid.h, 1)
+        self.assertEqual(self.grid.h(2), 1)
+
+    def test_h_without_index(self):
+        self.assertEqual(self.grid.h(), 1)

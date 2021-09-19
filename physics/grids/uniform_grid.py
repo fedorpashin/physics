@@ -1,8 +1,8 @@
 from physics.grids.any_grid import AnyGrid
-from physics.grids.grid import Grid
 from physics import Interval
 
 from dataclasses import dataclass
+from multimethod import multimethod
 from final_class import final
 from overrides import overrides
 
@@ -38,8 +38,13 @@ class UniformGrid(AnyGrid):
     def n(self) -> int:
         return self.__n
 
+    @multimethod
     @overrides
     def h(self, i: int) -> float:
+        return self.__h
+
+    @h.register  # type: ignore
+    def h(self) -> float:
         return self.__h
 
     @overrides
