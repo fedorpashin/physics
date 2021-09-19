@@ -38,3 +38,12 @@ class Grid(AnyGrid):
     @overrides
     def h(self, i: int) -> float:
         return self.points[i] - self.points[i-1]
+
+    @overrides
+    def ħ(self, i: int) -> float:
+        if i == 0:
+            return self.h(1) / 2
+        elif i == self.n:
+            return self.h(self.n) / 2
+        else:
+            return (self.h(i) + self.h(i+1)) / 2
