@@ -11,3 +11,6 @@ class Interval:
 
     def __post_init__(self):
         assert self.l < self.r
+
+    def __len__(self):
+        return self.r - self.l
