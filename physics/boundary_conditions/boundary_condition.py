@@ -1,7 +1,10 @@
-from abc import ABC
+from abc import ABC, abstractmethod
 
 __all__ = ['BoundaryCondition']
 
 
 class BoundaryCondition(ABC):
-    pass
+    @property
+    @abstractmethod
+    def ν(self):
+        pass
