@@ -1,4 +1,4 @@
-from physics.grids.grid import Grid
+from physics.grids.common_grid import CommonGrid
 from physics import Interval
 
 from typing import Final
@@ -6,9 +6,9 @@ from typing import Final
 import unittest
 
 
-class TestGrid(unittest.TestCase):
+class TestCommonGrid(unittest.TestCase):
     points: Final = [1, 1.2, 1.5, 2, 3]
-    grid: Final = Grid(points)
+    grid: Final = CommonGrid(points)
 
     def test_points(self):
         self.assertEqual(self.grid.points, self.points)

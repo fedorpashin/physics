@@ -12,7 +12,7 @@ __all__ = ['Grid']
 
 @final
 @dataclass
-class Grid(AnyGrid):
+class CommonGrid(AnyGrid):
     __points: list[float]
 
     def __init__(self, points: list[float]):
