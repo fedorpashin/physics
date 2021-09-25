@@ -50,10 +50,6 @@ class UniformGrid(AnyUniformGrid):
     def h(self) -> float:
         return self.__h
 
-    @overrides
-    def ħ(self, i: int) -> float:
-        return self.__h
-
     @cached_property
     def __h(self) -> float:
         return Length(self.interval) / self.n

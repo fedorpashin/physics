@@ -24,11 +24,3 @@ class TestCommonGrid(unittest.TestCase):
 
     def test_h(self):
         self.assertAlmostEqual(self.grid.h(2), 0.3)
-
-    def test_ħ(self):
-        with self.subTest():
-            self.assertAlmostEqual(self.grid.ħ(0), 0.1)
-        with self.subTest():
-            self.assertAlmostEqual(self.grid.ħ(4), 0.5)
-        with self.subTest():
-            self.assertAlmostEqual(self.grid.ħ(2), 0.4)
