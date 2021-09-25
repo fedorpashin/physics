@@ -8,6 +8,8 @@ from overrides import overrides
 
 from functools import cached_property
 
+__all__ = ['UniformGrid']
+
 
 @final
 @dataclass
