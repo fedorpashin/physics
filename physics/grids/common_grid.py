@@ -1,4 +1,4 @@
-from physics.grids.any_grid import AnyGrid
+from physics.grids.any_common_grid import AnyCommonGrid
 from physics import Interval
 
 from dataclasses import dataclass
@@ -12,7 +12,7 @@ __all__ = ['Grid']
 
 @final
 @dataclass
-class CommonGrid(AnyGrid):
+class CommonGrid(AnyCommonGrid):
     __points: list[float]
 
     def __init__(self, points: list[float]):
