@@ -16,5 +16,6 @@ from .equations.heat.heat_equation import *
 
 from .grids.grid import *
 from .grids.uniform_grid import *
+from .grids.default_grid import *
 
 from .factories.default_algorithm import *

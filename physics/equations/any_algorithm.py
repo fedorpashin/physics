@@ -1,4 +1,4 @@
-from linalg import Vector
+import linalg as la
 from physics.equations.any_equation import AnyEquation
 
 from abc import ABC, abstractmethod
@@ -11,5 +11,5 @@ T = TypeVar('T', bound=AnyEquation)
 
 class AnyAlgorithm(ABC, Generic[T]):
     @abstractmethod
-    def solution(self, equation: T) -> Vector:
+    def solution(self, equation: T) -> la.Solution:
         pass
