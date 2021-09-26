@@ -22,4 +22,5 @@ from .grids.common_auxiliary_grid import *
 from .grids.uniform_auxiliary_grid import *
 from .grids.default_grid import *
 
+from .factories.auxiliary_grid import *
 from .factories.default_algorithm import *

@@ -3,7 +3,9 @@ from physics.grids.any_auxiliary_grid import AnyAuxiliaryGrid
 from physics.grids.uniform_grid import UniformGrid
 from physics import Interval
 
+from dataclasses import dataclass
 from multimethod import multimethod
+from final_class import final
 from overrides import overrides
 
 from functools import cached_property
@@ -11,19 +13,21 @@ from functools import cached_property
 __all__ = ['UniformAuxiliaryGrid']
 
 
+@final
+@dataclass
 class UniformAuxiliaryGrid(AnyUniformGrid, AnyAuxiliaryGrid):
-    source: AnyUniformGrid
+    __source: AnyUniformGrid
 
     def __init__(self, grid: AnyUniformGrid):
-        self.source = grid
+        self.__source = grid
 
     @property  # type: ignore
     @overrides
     def points(self) -> list[float]:
         return (
-            [self.source.interval.l]
+            [self.__source.interval.l]
             + self.__core.points
-            + [self.source.interval.r]
+            + [self.__source.interval.r]
         )
 
     @overrides
@@ -37,7 +41,7 @@ class UniformAuxiliaryGrid(AnyUniformGrid, AnyAuxiliaryGrid):
     @property  # type: ignore
     @overrides
     def interval(self) -> Interval:
-        return self.source.interval
+        return self.__source.interval
 
     @property  # type: ignore
     @overrides
@@ -59,8 +63,8 @@ class UniformAuxiliaryGrid(AnyUniformGrid, AnyAuxiliaryGrid):
 
     @cached_property
     def __core(self) -> UniformGrid:
-        interval = self.source.interval
-        n = self.source.n
+        interval = self.__source.interval
+        n = self.__source.n
         return UniformGrid(
             Interval(interval.l + self.__half_of_h, interval.r - self.__half_of_h),
             n - 1
@@ -68,4 +72,4 @@ class UniformAuxiliaryGrid(AnyUniformGrid, AnyAuxiliaryGrid):
 
     @cached_property
     def __half_of_h(self) -> float:
-        return self.source.h() / 2
+        return self.__source.h() / 2
