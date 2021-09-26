@@ -1,5 +1,6 @@
 from physics.grids.any_grid import AnyGrid
 from physics import Interval
+from physics.length import Length
 
 from dataclasses import dataclass
 from multimethod import multimethod
@@ -55,4 +56,4 @@ class UniformGrid(AnyGrid):
 
     @cached_property
     def __h(self) -> float:
-        return len(self.interval) / self.n
+        return Length(self.interval) / self.n
