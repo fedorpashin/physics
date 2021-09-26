@@ -45,8 +45,8 @@ class UniformAuxiliaryGrid(AnyUniformGrid, AnyAuxiliaryGrid):
 
     @property  # type: ignore
     @overrides
-    def n(self) -> int:
-        return self.__core.n + 2
+    def num_parts(self) -> int:
+        return self.__core.num_parts + 2
 
     @multimethod
     @overrides
@@ -64,10 +64,10 @@ class UniformAuxiliaryGrid(AnyUniformGrid, AnyAuxiliaryGrid):
     @cached_property
     def __core(self) -> UniformGrid:
         interval = self.__source.interval
-        n = self.__source.n
+        num_parts = self.__source.num_parts
         return UniformGrid(
             Interval(interval.l + self.__half_of_h, interval.r - self.__half_of_h),
-            n - 1
+            num_parts - 1
         )
 
     @cached_property
