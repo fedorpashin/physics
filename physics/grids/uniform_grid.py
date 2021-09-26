@@ -1,12 +1,14 @@
 from physics.grids.any_grid import AnyGrid
-from physics.grids.grid import Grid
 from physics import Interval
 
 from dataclasses import dataclass
+from multimethod import multimethod
 from final_class import final
 from overrides import overrides
 
 from functools import cached_property
+
+__all__ = ['UniformGrid']
 
 
 @final
@@ -25,8 +27,8 @@ class UniformGrid(AnyGrid):
         return [self.point(i) for i in range(self.n + 1)]
 
     @overrides
-    def point(self, i) -> float:
-        return self.interval.l + i * self.h
+    def point(self, i: int) -> float:
+        return self.interval.l + i * self.__h
 
     @property  # type: ignore
     @overrides
@@ -38,6 +40,19 @@ class UniformGrid(AnyGrid):
     def n(self) -> int:
         return self.__n
 
-    @cached_property
+    @multimethod
+    @overrides
+    def h(self, i: int) -> float:
+        return self.__h
+
+    @h.register  # type: ignore
     def h(self) -> float:
+        return self.__h
+
+    @overrides
+    def ħ(self, i: int) -> float:
+        return self.__h
+
+    @cached_property
+    def __h(self) -> float:
         return len(self.interval) / self.n

@@ -7,6 +7,8 @@ from overrides import overrides
 
 from functools import cached_property
 
+__all__ = ['Grid']
+
 
 @final
 @dataclass
@@ -22,7 +24,7 @@ class Grid(AnyGrid):
         return self.__points
 
     @overrides
-    def point(self, i) -> float:
+    def point(self, i: int) -> float:
         return self.points[i]
 
     @cached_property  # type: ignore
@@ -34,3 +36,16 @@ class Grid(AnyGrid):
     @overrides
     def n(self) -> int:
         return len(self.points) - 1
+
+    @overrides
+    def h(self, i: int) -> float:
+        return self.points[i] - self.points[i-1]
+
+    @overrides
+    def ħ(self, i: int) -> float:
+        if i == 0:
+            return self.h(1) / 2
+        elif i == self.n:
+            return self.h(self.n) / 2
+        else:
+            return (self.h(i) + self.h(i+1)) / 2
