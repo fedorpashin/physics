@@ -7,7 +7,7 @@ from overrides import overrides
 
 from functools import cached_property
 
-__all__ = ['Grid']
+__all__ = ['CommonGrid']
 
 
 @final
