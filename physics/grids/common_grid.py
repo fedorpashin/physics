@@ -1,4 +1,4 @@
-from physics.grids.any_grid import AnyGrid
+from physics.grids.any_common_grid import AnyCommonGrid
 from physics import Interval
 
 from dataclasses import dataclass
@@ -7,12 +7,12 @@ from overrides import overrides
 
 from functools import cached_property
 
-__all__ = ['Grid']
+__all__ = ['CommonGrid']
 
 
 @final
 @dataclass
-class Grid(AnyGrid):
+class CommonGrid(AnyCommonGrid):
     __points: list[float]
 
     def __init__(self, points: list[float]):
@@ -40,12 +40,3 @@ class Grid(AnyGrid):
     @overrides
     def h(self, i: int) -> float:
         return self.points[i] - self.points[i-1]
-
-    @overrides
-    def ħ(self, i: int) -> float:
-        if i == 0:
-            return self.h(1) / 2
-        elif i == self.n:
-            return self.h(self.n) / 2
-        else:
-            return (self.h(i) + self.h(i+1)) / 2

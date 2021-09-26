@@ -28,7 +28,3 @@ class AnyGrid(ABC):
     @abstractmethod
     def h(self, i: int) -> float:
         pass
-
-    @abstractmethod
-    def ħ(self, i: int) -> float:
-        pass

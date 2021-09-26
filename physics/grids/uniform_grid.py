@@ -1,4 +1,4 @@
-from physics.grids.any_grid import AnyGrid
+from physics.grids.any_uniform_grid import AnyUniformGrid
 from physics import Interval
 from physics.length import Length
 
@@ -14,7 +14,7 @@ __all__ = ['UniformGrid']
 
 @final
 @dataclass
-class UniformGrid(AnyGrid):
+class UniformGrid(AnyUniformGrid):
     __interval: Interval
     __n: int
 
@@ -48,10 +48,6 @@ class UniformGrid(AnyGrid):
 
     @h.register  # type: ignore
     def h(self) -> float:
-        return self.__h
-
-    @overrides
-    def ħ(self, i: int) -> float:
         return self.__h
 
     @cached_property
