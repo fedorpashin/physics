@@ -3,6 +3,8 @@ from physics.grids.any_auxiliary_grid import AnyAuxiliaryGrid
 from physics.grids.common_grid import CommonGrid
 from physics import Interval
 
+from dataclasses import dataclass
+from final_class import final
 from overrides import overrides
 
 from functools import cached_property
@@ -10,11 +12,13 @@ from functools import cached_property
 __all__ = ['CommonAuxiliaryGrid']
 
 
+@final
+@dataclass
 class CommonAuxiliaryGrid(AnyCommonGrid, AnyAuxiliaryGrid):
-    source: AnyCommonGrid
+    __source: AnyCommonGrid
 
     def __init__(self, grid: AnyCommonGrid):
-        self.source = grid
+        self.__source = grid
 
     @property  # type: ignore
     @overrides
@@ -28,7 +32,7 @@ class CommonAuxiliaryGrid(AnyCommonGrid, AnyAuxiliaryGrid):
     @property  # type: ignore
     @overrides
     def interval(self) -> Interval:
-        return self.source.interval
+        return self.__source.interval
 
     @property  # type: ignore
     @overrides
@@ -45,8 +49,8 @@ class CommonAuxiliaryGrid(AnyCommonGrid, AnyAuxiliaryGrid):
 
     @cached_property
     def __value(self) -> CommonGrid:
-        points = self.source.points
-        n = len(self.source.points)
+        points = self.__source.points
+        n = len(self.__source.points)
         return CommonGrid(
             [points[0]]
             + [(points[i] + points[i-1]) / 2 for i in range(1, n)]
