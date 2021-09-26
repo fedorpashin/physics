@@ -36,8 +36,8 @@ class CommonAuxiliaryGrid(AnyCommonGrid, AnyAuxiliaryGrid):
 
     @property  # type: ignore
     @overrides
-    def n(self) -> int:
-        return self.__value.n
+    def num_parts(self) -> int:
+        return self.__value.num_parts
 
     @overrides
     def h(self, i: int) -> float:

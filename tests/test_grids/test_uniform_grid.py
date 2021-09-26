@@ -9,8 +9,8 @@ from numpy.testing import assert_almost_equal
 
 class TestUniformGrid(unittest.TestCase):
     interval: Final = Interval(1, 5)
-    n: Final = 4
-    grid: Final = UniformGrid(interval, n)
+    num_parts: Final = 4
+    grid: Final = UniformGrid(interval, num_parts)
 
     def test_points(self):
         assert_almost_equal(self.grid.points, [1, 2, 3, 4, 5])
@@ -21,8 +21,8 @@ class TestUniformGrid(unittest.TestCase):
     def test_interval(self):
         self.assertEqual(self.grid.interval, self.interval)
 
-    def test_n(self):
-        self.assertEqual(self.grid.n, self.n)
+    def test_num_parts(self):
+        self.assertEqual(self.grid.num_parts, self.num_parts)
 
     def test_h(self):
         self.assertEqual(self.grid.h(2), 1)

@@ -1,3 +1,4 @@
+from physics.partition import Partition
 from physics import Interval
 
 from abc import ABC, abstractmethod
@@ -5,7 +6,7 @@ from abc import ABC, abstractmethod
 __all__ = ['AnyGrid']
 
 
-class AnyGrid(ABC):
+class AnyGrid(Partition, ABC):
     @property
     @abstractmethod
     def points(self) -> list[float]:
@@ -18,11 +19,6 @@ class AnyGrid(ABC):
     @property
     @abstractmethod
     def interval(self) -> Interval:
-        pass
-
-    @property
-    @abstractmethod
-    def n(self) -> int:
         pass
 
     @abstractmethod

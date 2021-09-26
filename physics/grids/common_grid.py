@@ -34,7 +34,7 @@ class CommonGrid(AnyCommonGrid):
 
     @property  # type: ignore
     @overrides
-    def n(self) -> int:
+    def num_parts(self) -> int:
         return len(self.points) - 1
 
     @overrides

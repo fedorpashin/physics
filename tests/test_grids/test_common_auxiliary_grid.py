@@ -21,8 +21,8 @@ class TestCommonAuxiliaryGrid(unittest.TestCase):
     def test_interval(self):
         self.assertEqual(self.grid.interval, Interval(1, 3))
 
-    def test_n(self):
-        self.assertEqual(self.grid.n, 5)
+    def test_num_parts(self):
+        self.assertEqual(self.grid.num_parts, 5)
 
     def test_h(self):
         self.assertAlmostEqual(self.grid.h(2), 0.25)

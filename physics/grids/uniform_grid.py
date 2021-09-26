@@ -16,16 +16,16 @@ __all__ = ['UniformGrid']
 @dataclass
 class UniformGrid(AnyUniformGrid):
     __interval: Interval
-    __n: int
+    __num_parts: int
 
-    def __init__(self, interval: Interval, n: int):
+    def __init__(self, interval: Interval, num_parts: int):
         self.__interval = interval
-        self.__n = n
+        self.__num_parts = num_parts
 
     @cached_property  # type: ignore
     @overrides
     def points(self) -> list[float]:
-        return [self.point(i) for i in range(self.n + 1)]
+        return [self.point(i) for i in range(self.num_parts + 1)]
 
     @overrides
     def point(self, i: int) -> float:
@@ -38,8 +38,8 @@ class UniformGrid(AnyUniformGrid):
 
     @property  # type: ignore
     @overrides
-    def n(self) -> int:
-        return self.__n
+    def num_parts(self) -> int:
+        return self.__num_parts
 
     @multimethod
     @overrides
@@ -52,4 +52,4 @@ class UniformGrid(AnyUniformGrid):
 
     @cached_property
     def __h(self) -> float:
-        return Length(self.interval) / self.n
+        return Length(self.interval) / self.num_parts

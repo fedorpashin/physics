@@ -23,8 +23,8 @@ class TestUniformAuxiliaryGrid(unittest.TestCase):
     def test_interval(self):
         self.assertEqual(self.grid.interval, self.interval)
 
-    def test_n(self):
-        self.assertEqual(self.grid.n, 5)
+    def test_num_parts(self):
+        self.assertEqual(self.grid.num_parts, 5)
 
     def test_h(self):
         self.assertEqual(self.grid.h(2), 1)
