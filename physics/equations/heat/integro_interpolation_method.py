@@ -36,26 +36,26 @@ class IntegroInterpolationMethod(HeatEquationAlgorithm):
                     a = [
                         Undefined for i in range(n)
                     ] + [
-                        0 if type(rbc) == FirstType else
-                        -1 if type(rbc) == SecondType else  # noqa
+                        0 if type(rbc) is FirstType else
+                        -1 if type(rbc) is SecondType else  # noqa
                         Undefined
                     ],
                     b = [
-                        0 if type(lbc) == FirstType else
-                        Undefined if type(lbc) == SecondType else
+                        0 if type(lbc) is FirstType else
+                        Undefined if type(lbc) is SecondType else
                         Undefined
                     ] + [
                         None for i in range(n)
                     ],
                     c = [
-                        1 if type(lbc) == FirstType else
-                        Undefined if type(lbc) == SecondType else
+                        1 if type(lbc) is FirstType else
+                        Undefined if type(lbc) is SecondType else
                         Undefined
                     ] + [
                         Undefined for i in range(n)
                     ] + [
-                        1 if type(rbc) == FirstType else
-                        Undefined if type(rbc) == SecondType else
+                        1 if type(rbc) is FirstType else
+                        Undefined if type(rbc) is SecondType else
                         Undefined
                     ]
                 ),
