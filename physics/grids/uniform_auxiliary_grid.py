@@ -31,11 +31,10 @@ class UniformAuxiliaryGrid(AnyUniformGrid, AnyAuxiliaryGrid):
         )
 
     @overrides
-    def point(self, i: int) -> float:
+    def point(self, i: int, with_half=False) -> float:
         return (
-            self.interval.l
-            + (self.__half_of_h if i > 0 else 0)
-            + ((i-1) * self.h() if i > 1 else 0)
+            self.__half_of_h + i*self.h() if with_half else
+            self.__source.point(i)
         )
 
     @property  # type: ignore
@@ -56,10 +55,6 @@ class UniformAuxiliaryGrid(AnyUniformGrid, AnyAuxiliaryGrid):
     @h.register  # type: ignore
     def h(self) -> float:
         return self.__core.h()
-
-    @overrides
-    def point_with_half(self, i: int) -> float:
-        return self.point(i+1)
 
     @cached_property
     def __core(self) -> UniformGrid:

@@ -26,8 +26,11 @@ class CommonAuxiliaryGrid(AnyCommonGrid, AnyAuxiliaryGrid):
         return self.__value.points
 
     @overrides
-    def point(self, i: int) -> float:
-        return self.__value.point(i)
+    def point(self, i: int, with_half=False) -> float:
+        return (
+            self.__value.point(i+1) if with_half else
+            self.__source.point(i)
+        )
 
     @property  # type: ignore
     @overrides
@@ -42,10 +45,6 @@ class CommonAuxiliaryGrid(AnyCommonGrid, AnyAuxiliaryGrid):
     @overrides
     def h(self, i: int) -> float:
         return self.__value.h(i)
-
-    @overrides
-    def point_with_half(self, i: int) -> float:
-        return self.point(i+1)
 
     @cached_property
     def __value(self) -> CommonGrid:
