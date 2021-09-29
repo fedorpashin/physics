@@ -18,7 +18,10 @@ class TestUniformAuxiliaryGrid(unittest.TestCase):
         assert_almost_equal(self.grid.points, [1, 1.5, 2.5, 3.5, 4.5, 5])
 
     def test_point(self):
-        self.assertEqual(self.grid.point(2), 2.5)
+        self.assertEqual(self.grid.point(2), 3)
+
+    def test_point_with_half(self):
+        self.assertEqual(self.grid.point(2, with_half=True), 2.5)
 
     def test_interval(self):
         self.assertEqual(self.grid.interval, self.interval)

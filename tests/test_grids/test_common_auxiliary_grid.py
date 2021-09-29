@@ -16,7 +16,10 @@ class TestCommonAuxiliaryGrid(unittest.TestCase):
         self.assertEqual(self.grid.points, [1, 1.1, 1.35, 1.75, 2.5, 3])
 
     def test_point(self):
-        self.assertEqual(self.grid.point(3), 1.75)
+        self.assertEqual(self.grid.point(3), 2)
+
+    def test_point_with_half(self):
+        self.assertEqual(self.grid.point(3, with_half=True), 2.5)
 
     def test_interval(self):
         self.assertEqual(self.grid.interval, Interval(1, 3))
