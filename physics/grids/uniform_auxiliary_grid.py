@@ -50,7 +50,10 @@ class UniformAuxiliaryGrid(AnyUniformGrid, AnyAuxiliaryGrid):
     @multimethod
     @overrides
     def h(self, i: int) -> float:
-        return self.__core.h(i)
+        return (
+            self.__half_of_h if i == 0 or i == self.__source.num_parts else
+            self.h()
+        )
 
     @h.register  # type: ignore
     def h(self) -> float:
