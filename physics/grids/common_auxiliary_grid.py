@@ -44,7 +44,7 @@ class CommonAuxiliaryGrid(AnyCommonGrid, AnyAuxiliaryGrid):
 
     @overrides
     def h(self, i: int) -> float:
-        return self.__value.h(i)
+        return self.__value.h(i + 1)
 
     @cached_property
     def __value(self) -> CommonGrid:
