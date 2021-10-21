@@ -28,4 +28,4 @@ class TestCommonAuxiliaryGrid(unittest.TestCase):
         self.assertEqual(self.grid.num_parts, 5)
 
     def test_h(self):
-        self.assertAlmostEqual(self.grid.h(2), 0.25)
+        self.assertAlmostEqual(self.grid.h(2), 0.4)

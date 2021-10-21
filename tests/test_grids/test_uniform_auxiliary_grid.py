@@ -32,5 +32,11 @@ class TestUniformAuxiliaryGrid(unittest.TestCase):
     def test_h(self):
         self.assertEqual(self.grid.h(2), 1)
 
+    def test_h_on_bounds(self):
+        with self.subTest():
+            self.assertEqual(self.grid.h(0), 0.5)
+        with self.subTest():
+            self.assertEqual(self.grid.h(4), 0.5)
+
     def test_h_without_index(self):
         self.assertEqual(self.grid.h(), 1)
